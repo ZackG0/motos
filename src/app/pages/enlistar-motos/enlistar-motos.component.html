@@ -1,0 +1,50 @@
+<div class="container">
+  <br>
+  <h1 style="text-align: center;">Listado de Motos</h1>
+  <br>
+  <br>
+
+  <p *ngIf="motos.length <= 0" class="text-center">
+    No hay autos registrados
+  </p>
+
+  <table *ngIf="motos.length > 0" class="table table-dark table-striped">
+    <thead class="table-secondary ">
+      <tr>
+          <th scope="col">ID Moto</th>
+          <th scope="col">Marca</th>
+          <th scope="col">Modelo</th>
+          <th scope="col">Año</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Imagen</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Eliminar</th>
+
+      </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let auto of motos; let i = index">
+      <td>{{moto._id}}</td>
+      <td>{{moto.marca}}</td>
+      <td>{{moto.modelo}}</td>
+      <td>{{moto.anio}}</td>
+      <td>{{moto.precio}}</td>
+      <td><img src="{{moto.imagen}}" alt="" width="100"></td>
+      <td>
+        <span [routerLink]="['/editar-moto',moto._id]">
+          <button type="button" class="btn btn-success btn-sm">
+            Editar
+          </button>
+        </span>
+      </td>
+      <td>
+        <span (click)="eliminarMoto(empleado, i)">
+          <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+      </span>
+      </td>
+
+    </tr>
+  </tbody>
+  </table>
+
+</div>
